@@ -286,6 +286,20 @@ h1, h2, h3, h4 {
 }
 .marquee-track:hover { animation-play-state: paused; }
 
+/* Cards travelling along an SVG arc — right to left — see hero ticker */
+@keyframes card-arc-travel {
+  from { offset-distance: 100%; }
+  to   { offset-distance: 0%; }
+}
+.card-arc {
+  offset-path: var(--arch-path, path('M -420 410 Q 720 -110 1860 410'));
+  offset-rotate: auto;
+  offset-anchor: 50% 50%;
+  animation: card-arc-travel 42s linear infinite;
+  top: 0;
+  left: 0;
+}
+
 @keyframes marqueeBig {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -361,6 +375,15 @@ h1, h2, h3, h4 {
   background-clip: text;
   color: transparent;
   animation: gradientShift 8s ease infinite;
+}
+/* Ensure the gradient propagates through transformed descendants
+   (e.g. SplitText / SplitTextScroll wrappers using translateY). */
+.gradient-text * {
+  background: inherit;
+  background-size: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ---------- Section dividers ---------- */
