@@ -18,7 +18,7 @@ function renderWords(
   return words.map((word, i) => (
     <span
       key={i}
-      className="inline-block overflow-hidden align-bottom mr-[0.25em] last:mr-0"
+      className="inline-block overflow-hidden align-bottom mr-[0.25em] last:mr-0 pb-[0.18em] -mb-[0.18em]"
     >
       <motion.span
         initial={{ y: "110%", opacity: 0, filter: "blur(8px)" }}
